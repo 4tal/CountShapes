@@ -77,6 +77,9 @@ def myObjectCounter(img):
 
 #tempImage = cv2.imread('newImg64.pgm')
 #print myObjectCounter(tempImage)
+#cv2.imshow("Idan",tempImage)
+#cv2.waitKey(0)
+
 
 
 
