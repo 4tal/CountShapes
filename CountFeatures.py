@@ -53,13 +53,16 @@ def myObjectCounter(img):
             else:
                 b=255
 
+            #if(yPos<(height/95) or (yPos>(95*(height/100))) or (xPos>(95*(width/100))) or xPos<(5*(width/100))):
+            #    r=255
+            #    g=255
+            #    b=255
             newImg[yPos,xPos]=r,g,b
 
             xPos = xPos + 1 #Increment x position by 1
         xPos=0
         yPos = yPos + 1 #Increment X position by
-    newImg=cv2.medianBlur(newImg,11)
-
+    newImg=cv2.medianBlur(newImg,9)
     xPos=yPos=0
     while yPos < height: #Loop through rows
         while xPos < width: #Loop through collumns
@@ -68,18 +71,23 @@ def myObjectCounter(img):
             if(((r==0)or(g==0)or(b==0))and (numberOfObjectsMat[yPos,xPos]<1)):
                 howManyInfect=0
                 infect(yPos,xPos,currentNumberOfObjects)
-                if(howManyInfect>20):
+                #print howManyInfect
+                if(howManyInfect>200):
                     currentNumberOfObjects+=1
+                    #print howManyInfect
             xPos = xPos + 1 #Increment Y position by 1
         xPos=0
         yPos = yPos + 1 #Increment X position by
     return currentNumberOfObjects-1
 
-#tempImage = cv2.imread('newImg64.pgm')
-#print myObjectCounter(tempImage)
-#cv2.imshow("Idan",tempImage)
-#cv2.waitKey(0)
-
+"""
+tempImage = cv2.imread('newImg64.pgm')
+cv2.imshow("Idan",tempImage)
+cv2.waitKey(1)
+print myObjectCounter(tempImage)
+cv2.imshow("Idan",newImg)
+cv2.waitKey(0)
+"""
 
 
 
